@@ -1,2 +1,2 @@
-![visitenkarte2](https://user-images.githubusercontent.com/113173261/201356159-7176eeae-3703-41a8-bad0-d1b9be717b88.png)
-![visitenkarte](https://user-images.githubusercontent.com/113173261/201356165-282b21ed-4ab7-43b6-b141-f2c67966d2e0.png)
+![visitenkarte2](https://user-images.githubusercontent.com/113173261/201372794-84aa154e-f4b3-41f4-8b3e-4ac8071867d1.png)
+![visitenkarte](https://user-images.githubusercontent.com/113173261/201372813-962badc9-1925-4730-91f7-2bdc1ee98941.png)
