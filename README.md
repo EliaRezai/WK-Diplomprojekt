@@ -3,9 +3,9 @@
 ## Aktuelle Stand
 
 ### Logo fertig (Rezai)
-### Visitenkarte ferig (Rezai)
-### Branding BooK ferig (Rezai)
-### Startseite ferig (Rezai)
+### Visitenkarte fertig (Rezai)
+### Branding BooK fertig (Rezai)
+### Startseite fertig (Rezai)
 
 ### Mockup fertig (Nikolic)
 
