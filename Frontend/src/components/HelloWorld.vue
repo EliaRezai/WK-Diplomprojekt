@@ -179,7 +179,7 @@
 <!------- footer ------>
 
 <div class="footer">
-  <h4>Über uns</h4>
+  <h4>Über Uns</h4>
   <p>
     Oft unterschätzt und sträflich vernachlässigt: 
     Blindtexte! Es muss nicht immer Lorem Ipsum sein.
