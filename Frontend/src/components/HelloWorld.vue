@@ -185,9 +185,8 @@
     Blindtexte! Es muss nicht immer Lorem Ipsum sein.
      Warum nicht Goethe, Kafka oder ein Pangram?<br/> 
      Hier eine Auswahl 
-    an Blindtexten und Editoren für Blindtexte.
+    an Blindtexten und Editoren für Blindtexte
         <i class="fa fa-regular fa-user"></i>
-
   </p>
   
    <div class="c">
