@@ -4,9 +4,11 @@
 
 ### Logo fertig (Rezai)
 ### Visitenkarte fertig (Rezai)
-### Branding BooK fertig (Rezai)
+### Branding Book fertig (Rezai)
 ### Startseite fertig (Rezai)
-
+### -----------------------------------
 ### Mockup fertig (Nikolic)
-
+### -----------------------------------
 ### Datenbank (90%) (Lukas W)
+### -----------------------------------
+### Login (90%) (Neuhold)
