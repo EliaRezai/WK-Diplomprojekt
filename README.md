@@ -1,7 +1,7 @@
 # PVT Physiotherapie Verwaltungstool
 
-## Aktuelle Stand
-
+## Aktueller Stand
+In entwicklung
 ### Logo fertig (Rezai)
 ### Visitenkarte fertig (Rezai)
 ### Branding Book fertig (Rezai)
