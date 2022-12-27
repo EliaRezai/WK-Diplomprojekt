@@ -15,7 +15,7 @@
             <a href="">Startseite</a>
           </li>
           <li>
-            <a href="">Praxis</a>
+            <a href="Praxi.vue">Praxis</a>
           </li>
           <li>
             <a href="">Therapien</a>
@@ -179,26 +179,52 @@
 <!------- footer ------>
 
 <div class="footer">
-  <h4>Über Uns</h4>
-  <p>
-    Oft unterschätzt und sträflich vernachlässigt: 
-    Blindtexte! Es muss nicht immer Lorem Ipsum sein.
-     Warum nicht Goethe, Kafka oder ein Pangram?<br/> 
-     Hier eine Auswahl 
-    an Blindtexten und Editoren für Blindtexte
-        <i class="fa fa-regular fa-user"></i>
-  </p>
-  
-   <div class="c">
-    <p>
+  <div class="col-1">
+    <h3>USEFUL LIKS</h3>
+    <a href="#">About</a>
+    <a href="#">About</a>
+    <a href="#">About</a>
+    <a href="#">About</a>
+    
+  </div>
 
+  <div class="col-2">
+    <h3>NEWSLETTER</h3>
+    <form>
+      <input type="email" placeholder = "Ihre Email Adresse" required>
+      <br/>
+      <button type="submit">SUBSCRIBE NOW</button>
+    </form>
+  </div>
+
+  <div class="col-3">
+    <h3>
+      CONTACT
+    </h3> 
+
+    <p>
+      123, xyz Road, 3 <br> 1220 Wien Österreich
+      <br> +43 676 12345678
+    </p>
+
+  </div>
+  
+
+
+
+
+
+   
+
+</div>
+
+<div class="c">
+    <p>
     </p>
     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2657.1594957023185!2d16.433774915531757!3d48.24205707923181!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x476d06b8acf43aeb%3A0x45d393da8933bc6!2sWestfield%20Donau%20Zentrum!5e0!3m2!1sde!2sat!4v1670019399440!5m2!1sde!2sat" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
 
    </div> 
-
-</div>
 
 
 
@@ -545,10 +571,71 @@ h3{
 }
 
 .footer{
+  margin-top: 150px;
   width: 100%;
-  text-align: center;
-  padding: 30px 0;
+  padding: 100px 15%;
+  color: #efefef;
+  background-color: rgb(43, 38, 38);
+  display: flex;
 }
+
+.footer div{
+  text-align: center;
+}
+
+.col-2{
+  flex-grow: 2;
+}
+
+.footer div h3{
+  font-weight: 300;
+  margin-bottom: 30px;
+  letter-spacing: 1px;
+}
+
+.col-1 a{
+  display: block;
+  text-decoration: none;
+  color: #dadee1;
+  margin-bottom: 10px;
+}
+
+.col-3 a{
+  display: block;
+  text-decoration: none;
+  color: #dadee1;
+  margin-bottom: 10px;
+}
+
+.col-3 p{
+  display: block;
+  text-decoration: none;
+  color: #dadee1;
+  margin-bottom: 10px;
+}
+
+form input{
+  width: 400px;
+  height: 45px;
+  border-radius: 4px;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 40px;
+  outline: none;
+  border: none;
+}
+
+form button{
+  background: transparent;
+  border: 2px solid #fff;
+  color: #fff;
+  border-radius: 30px;
+  padding: 10px 30px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+
 
 .footer h4{
   margin-bottom: 25px;
