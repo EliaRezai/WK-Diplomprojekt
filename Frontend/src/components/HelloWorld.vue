@@ -48,6 +48,16 @@
     
   </div>
 
+
+  <div class="c">
+    <p>
+    </p>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2657.1594957023185!2d16.433774915531757!3d48.24205707923181!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x476d06b8acf43aeb%3A0x45d393da8933bc6!2sWestfield%20Donau%20Zentrum!5e0!3m2!1sde!2sat!4v1670019399440!5m2!1sde!2sat" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+
+   </div> 
+
+
   <!--Course-->
 
 
@@ -180,11 +190,11 @@
 
 <div class="footer">
   <div class="col-1">
-    <h3>USEFUL LIKS</h3>
-    <a href="#">About</a>
-    <a href="#">About</a>
-    <a href="#">About</a>
-    <a href="#">About</a>
+    <h3>Wichtige Links</h3>
+    <a href="#">Startseite</a>
+    <a href="#">Praxis</a>
+    <a href="#">Therapien</a>
+    <a href="#">Öffnungszeiten</a>
     
   </div>
 
@@ -193,18 +203,18 @@
     <form>
       <input type="email" placeholder = "Ihre Email Adresse" required>
       <br/>
-      <button type="submit">SUBSCRIBE NOW</button>
+      <button type="submit">Senden</button>
     </form>
   </div>
 
   <div class="col-3">
     <h3>
-      CONTACT
+      Kontakte
     </h3> 
 
     <p>
-      123, xyz Road, 3 <br> 1220 Wien Österreich
-      <br> +43 676 12345678
+      Alte Poststraße 14e <br> Maria Ellend 2402 Österreich
+      <br> +43 676 3285511
     </p>
 
   </div>
@@ -217,14 +227,6 @@
    
 
 </div>
-
-<div class="c">
-    <p>
-    </p>
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2657.1594957023185!2d16.433774915531757!3d48.24205707923181!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x476d06b8acf43aeb%3A0x45d393da8933bc6!2sWestfield%20Donau%20Zentrum!5e0!3m2!1sde!2sat!4v1670019399440!5m2!1sde!2sat" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-
-
-   </div> 
 
 
 
