@@ -233,13 +233,13 @@
     <form>
       <input type="email" placeholder = "Ihre Email Adresse" required>
       <br/>
-      <button type="submit">SUBSCRIBE NOW</button>
+      <button type="submit">Senden</button>
     </form>
   </div>
 
   <div class="col-3">
     <h3>
-      CONTACT
+      Kontakte
     </h3> 
 
     <p>
