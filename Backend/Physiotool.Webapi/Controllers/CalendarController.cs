@@ -1,9 +1,10 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Physiotool.Application.Infrastructure;
 using Physiotool.Application.Model;
-using Physiotool.Application.Services;
+using Physiotool.Application.Services.HolidayCalendar;
 using System;
 using System.Linq;
 
@@ -11,6 +12,7 @@ namespace Physiotool.Webapi.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [Authorize]
     public class CalendarController : ControllerBase
     {
         private readonly PhysioContext _db;
@@ -28,10 +30,14 @@ namespace Physiotool.Webapi.Controllers
         /// Termine ein. So kann das Frontend einen Monatskalender mit allen Terminen erstellen.
         /// </summary>
         [HttpGet("{year:int}/{month:int}")]
-        public IResult GetCalendar(int year, int month)
+        public IActionResult GetCalendar(int year, int month)
         {
-            var calendarDays = _calendarService.GetDaysOfMonth(year, month);
-            var appointments = _db.Appointments.Include(a => a.Patient).Where(a => a.Date.Month == month && a.Date.Year == year).ToList();
+            var calendarDays = _calendarService.GetDaysOfMonthFullWeeks(year, month);
+            var appointments = _db.Appointments.Include(a => a.Patient)
+                .Where(a => a.Date.Month == month && a.Date.Year == year)
+                .ToList()
+                .OrderBy(a => a.Date).ThenBy(a => a.Time)
+                .ToList();
             var result = calendarDays.GroupJoin(
                 appointments, c => c.DateTime, a => a.Date,
                 (calendarDay, appointments) => new
@@ -46,20 +52,20 @@ namespace Physiotool.Webapi.Controllers
                     IsWorkingDay = calendarDay.IsWorkingDayMoFr,
                     calendarDay.IsPublicHoliday,
                     PublicHolidayName = calendarDay.PublicHolidayName ?? string.Empty,
+                    SchoolHolidayName = calendarDay.SchoolHolidayName ?? string.Empty,
                     Appointments = appointments.Select(a => new
                     {
+                        a.Guid,
                         PatientFirstname = a.Patient.Firstname,
                         PatientLastname = a.Patient.Lastname,
                         PatientEmail = a.Patient.Email,
-                        a.Time.TotalHours,
-                        a.Time.TotalMinutes,
-                        Timestamp = calendarDay.JsTimestamp + a.Time.Ticks / TimeSpan.TicksPerMillisecond,
-                        Confirmed = a is ConfirmedAppointment,
-                        Deleted = a is DeletedAppointment,
-                        DurationMin = (a as ConfirmedAppointment)?.Duration.TotalMinutes
+                        Timestamp = calendarDay.JsTimestamp + a.Time.TotalMilliseconds,
+                        Confirmed = a.AppointmentState is ConfirmedAppointmentState,
+                        Deleted = a.AppointmentState is DeletedAppointmentState,
+                        DurationMin = (a.AppointmentState as ConfirmedAppointmentState)?.Duration.TotalMinutes
                     })
                 });
-            return Results.Ok(result);
+            return Ok(result);
         }
     }
 }

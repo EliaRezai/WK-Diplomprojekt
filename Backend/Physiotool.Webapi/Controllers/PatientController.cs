@@ -16,9 +16,9 @@ namespace Physiotool.Webapi.Controllers
         {
             _db = context;
         }
-        public IResult GetAllPatients()
+        public IActionResult GetAllPatients()
         {
-            return Results.Ok(_db.Patients.ToList());
+            return Ok(_db.Patients.ToList());
         }
     }
 }

@@ -1,24 +1,24 @@
+<script setup>
+import Header from "./components/Header.vue"
+</script>
 <template>
-  <HelloWorld msg="Startseite"/>
-
-  
+    <div class="mainApp">
+        <Header></Header>
+        <main>
+          <router-view></router-view>
+        </main>
+    </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
-
-
 export default {
-  name: 'App',
-  components: {
-    HelloWorld,
-  }
-}
+    name: 'App',
+    components: {
+        Header
+    },
+};
 </script>
 
-<style>
-#app {
-  
-}
+<style scoped>
+
 </style>

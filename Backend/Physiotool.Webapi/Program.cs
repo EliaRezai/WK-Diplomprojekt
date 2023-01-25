@@ -6,16 +6,13 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Physiotool.Application.Infrastructure;
-using Physiotool.Application.Services;
+using Physiotool.Application.Services.HolidayCalendar;
 using System;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddTransient(opt => new CalendarService(2000, 2100));
 
 // JWT Authentication ******************************************************************************
-// using Microsoft.AspNetCore.Authentication.JwtBearer;
-// using Microsoft.IdentityModel.Tokens;
-
 byte[] secret = Convert.FromBase64String(builder.Configuration["Secret"]);
 builder.Services
     .AddAuthentication(options => options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme)
