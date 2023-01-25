@@ -1,20 +1,29 @@
 # PVT Physiotherapie Verwaltungstool
 
-## Aktueller Stand
-In entwicklung
-### Kontaktseite fertig (Rezai)
-### Therapieseite fertig (Rezai)
-### Startseite fertig (Rezai)
-### Logo fertig (Rezai)
-### Visitenkarte fertig (Rezai)
-### Branding Book fertig (Rezai)
+| Name                   | Individuelle Themenstellung                                                    | Klasse |
+| ---------------------- | ------------------------------------------------------------------------------ | ------ |
+| **Elia Rezai**         | (Hier die Themenstellung von diplomarbeiten.berufsbildendeschulen.at kopieren) | 5CAIF  |
+| Dean-Christoph Neuhold | (Hier die Themenstellung von diplomarbeiten.berufsbildendeschulen.at kopieren) | 5CAIF  |
+| Dean Nikolic           | (Hier die Themenstellung von diplomarbeiten.berufsbildendeschulen.at kopieren) | 5CAIF  |
 
-### Handbuch fertig (Rezai)
-### Lastenheft fertig (Neuhold und Rezai)
+## Klonen des Repos
 
-### -----------------------------------
-### Mockup fertig (Nikolic)
-### -----------------------------------
-### Datenbank (90%) (Lukas W)
-### -----------------------------------
-### Login (90%) (Neuhold)
+```
+git clone https://github.com/EliaRezai/WK-Diplomprojekt
+```
+
+## Starten des ASP.NET Core Webservers
+
+Führe in die Datei *Backend/startDevServer.cmd* (Windows) bzw. *Backend/start_dev_server.sh* (macOS, Linux) aus.
+Es startet mit *dotnet watch run* die ASP.NET Core Applikation in *Backend/Physiotool.Webapi*.
+Der ASP.NET Core Webserver liefert die HTML Seite in *wwwroot/index.html* aus. Die API ist unter
+der Route */api/(controller)* erreichbar.
+
+### Build der Vue.js Applikation
+
+Damit die Webapi das Frontend ausliefert, muss ein Build des Frontends erstellt werden. Gehe
+in den Ordner *Frontend* und führe die folgenden Befehle aus:
+```
+npm install
+npm run build
+```
