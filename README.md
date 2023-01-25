@@ -6,6 +6,8 @@
 | Dean-Christoph Neuhold | (Hier die Themenstellung von diplomarbeiten.berufsbildendeschulen.at kopieren) | 5CAIF  |
 | Dean Nikolic           | (Hier die Themenstellung von diplomarbeiten.berufsbildendeschulen.at kopieren) | 5CAIF  |
 
+Betreuender Lehrer: Maximilian Kraft (KRM)
+
 ## Klonen des Repos
 
 ```
@@ -14,7 +16,7 @@ git clone https://github.com/EliaRezai/WK-Diplomprojekt
 
 ## Starten des ASP.NET Core Webservers
 
-Führe in die Datei *Backend/startDevServer.cmd* (Windows) bzw. *Backend/start_dev_server.sh* (macOS, Linux) aus.
+Führe die Datei *Backend/startDevServer.cmd* (Windows) bzw. *Backend/start_dev_server.sh* (macOS, Linux) aus.
 Es startet mit *dotnet watch run* die ASP.NET Core Applikation in *Backend/Physiotool.Webapi*.
 Der ASP.NET Core Webserver liefert die HTML Seite in *wwwroot/index.html* aus. Die API ist unter
 der Route */api/(controller)* erreichbar.
