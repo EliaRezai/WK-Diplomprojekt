@@ -1,11 +1,11 @@
 # PVT Physiotherapie Verwaltungstool
 
-| Name                   | Email                    | Individuelle Themenstellung                                                    | Klasse |
-| ---------------------- | ------------------------ | ------------------------------------------------------------------------------ | ------ |
-| **Elia Rezai**         | REZ22842@spengergasse.at | (Hier die Themenstellung von diplomarbeiten.berufsbildendeschulen.at kopieren) | 5CAIF  |
-| Dean-Christoph Neuhold | NEU22840@spengergasse.at | (Hier die Themenstellung von diplomarbeiten.berufsbildendeschulen.at kopieren) | 5CAIF  |
-| Dean Nikolic           | NIK22370@spengergasse.at | (Hier die Themenstellung von diplomarbeiten.berufsbildendeschulen.at kopieren) | 5CAIF  |
-| Lukas Wezowicz         | WEZ22849@spengergasse.at | (Hier die Themenstellung von diplomarbeiten.berufsbildendeschulen.at kopieren) | 5CAIF  |
+| Name                       | Email                    | Individuelle Themenstellung                                                      | Klasse |
+| -------------------------- | ------------------------ | -------------------------------------------------------------------------------- | ------ |
+| Elia Rezai                 | REZ22842@spengergasse.at | Entwicklung der Frontend Oberfläche und designerische Darstellung der Ordination | 5CAIF  |
+| **Dean-Christoph Neuhold** | NEU22840@spengergasse.at | Entwicklung der Hauptfunktionalitäten im Frontend Bereich                        | 5CAIF  |
+| Dean Nikolic               | NIK22370@spengergasse.at | Entwicklung der Schnittstellen im Backend Bereich                                | 5CAIF  |
+| Lukas Wezowicz             | WEZ22849@spengergasse.at | Entwicklung der Datenbank und Unterstützung im Frontend Bereich                  | 5CAIF  |
 
 Betreuender Lehrer: Maximilian Kraft (KRM)
 
