@@ -126,7 +126,7 @@ export default {
   min-height: 100vh ;
   width: 100%;
   background-image: linear-gradient(rgba(4,9,30,0.7),
-  rgba(4,9,30,0.7)), url("@/assets/77.jpg");
+  rgba(4,9,30,0.7)), url("~@/assets/images/77.jpg");
   background-position: center;
   background-size: cover;
   position: relative;
@@ -282,7 +282,7 @@ nav img{
 .cta{
   margin: 100px auto;
   width: 80%;
-  background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url("@/assets/55.jpg") ;
+  background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url("~@/assets/iamges/55.jpg") ;
   background-position: center;
   background-size: cover;
   border-radius: 10px;
@@ -446,7 +446,7 @@ iframe{
 .sub-header{
   height: 50vh;
   width: 100%;
-  background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url("@/assets/44.jpg") ;
+  background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url("~@/assets/images/44.jpg") ;
   background-position: center;
   background-size: cover;
   color: fff;
