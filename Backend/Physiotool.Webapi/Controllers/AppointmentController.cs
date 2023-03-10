@@ -25,7 +25,7 @@ namespace Physiotool.Webapi.Controllers
         [HttpPost("/api/appointment")]
         public String Test(String name)
         {
-            return "hello world"+name;
+            return "hello world2"+name;
         }
     }
 }
