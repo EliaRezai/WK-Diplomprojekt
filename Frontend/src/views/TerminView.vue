@@ -3,37 +3,89 @@
         <!-- Load Font Awesome Icon Library -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 
-        <div class="row">
-            <div class="description">
-                <p>
-                    Sehr geehrte Patienten! In der folgenden Tabelle sehen Sie Termine, welche für Sie zu Verfügung stehen. Der Button Termin ermöglicht es Ihnen, eine zeitliche Auswahl zu treffen.
-                    Haben Sie sich für einen Termin entschieden, drücken Sie auf den Button "Reservieren" in der Zeile des gewünschten Termins.
-                </p>
+        <div class="description">
+            <p>
+                Sehr geehrte Patienten! In der folgenden Tabelle sehen Sie Termine, welche für Sie zu Verfügung stehen.
+                Der Button Termin ermöglicht es Ihnen, eine zeitliche Auswahl zu treffen.
+                Haben Sie sich für einen Termin entschieden, drücken Sie auf den Button "Reservieren" in der Zeile des
+                gewünschten Termins.
+            </p>
+        </div>
+        <div class="appointmentForm">
+            <div class="block">
+                <div class="label">Vorname:</div>
+                <div class="control">
+                    <input type="text" required maxlength="255" minlength="1" v-model="model.patientFirstname" />
+                    <span class="validationError" v-if="validation.patientFirstname">{{ validation.patientFirstname
+                    }}</span>
+                </div>
             </div>
-                <label for="appointment-time">Wähle einen Termin:</label>
+            <div class="block">
+                <div class="label">Nachname:</div>
+                <div class="control">
+                    <input type="text" required maxlength="255" minlength="1" v-model="model.patientLastname" />
+                    <span class="validationError" v-if="validation.patientLastname">{{ validation.patientLastname }}</span>
+                </div>
+            </div>
+            <div class="block">
+                <div class="label">Straße:</div>
+                <div class="control">
+                    <input type="text" required maxlength="255" minlength="1" v-model="model.patientStreet" />
+                    <span class="validationError" v-if="validation.patientStreet">{{ validation.patientStreet }}</span>
+                </div>
+            </div>
 
-                <!-- <select id="appointment-time" name="appointment-time" v-model="selectedAppointment">
-      <option v-for="appointment in appointments" :key="appointment">{{ appointment }}</option>
-    </select>
-    -->
-                <label for="date"> Datum:</label>
+            <div class="inline">
+                <div class="block">
+                    <div class="label">PLZ:</div>
+                    <div class="control">
+                        <input type="number" min="1000" max="9999" v-model="model.patientZip" />
+                        <span class="validationError" v-if="validation.patientZip">{{ validation.patientZip }}</span>
+                    </div>
+                </div>
+                <div class="block">
+                    <div class="label">Ort:</div>
+                    <div class="control">
+                        <input type="text" required maxlength="255" minlength="1" v-model="model.patientCity" />
+                        <span class="validationError" v-if="validation.patientCity">{{ validation.patientCity }}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="block">
 
-                <input type="date" id="date" name="trip-start" min="" max="" v-model="model.date" />
+                <div class="label">E-Mail:</div>
+                <div class="control">
+                    <input type="email" required maxlength="255" minlength="1" v-model="model.patientEmail" />
+                    <span class="validationError" v-if="validation.patientEmail">{{ validation.patientEmail }}</span>
+                </div>
+            </div>
+            <div class="block">
 
-                <label for="date">Uhrzeit:</label>
+                <div class="label">Telefon:</div>
+                <div class="control">
+                    <input type="tel" required maxlength="255" minlength="1" v-model="model.patientPhone" />
+                    <span class="validationError" v-if="validation.patientPhone">{{ validation.patientPhone }}</span>
+                </div>
+            </div>
 
-                <input type="time" min="07:30:00" max="18:30:00" step="600" v-model="model.time" />
+            <div class="block">
 
-                <label for="first-name">Vorname:</label>
-                <input type="text" id="first-name" name="first-name" v-model="model.patientFirstname" />
+                <div class="label">Datum:</div>
+                <div class="control">
+                    <input type="date" min="" max="" v-model="model.date" />
+                    <span class="validationError" v-if="validation.date">{{ validation.date }}</span>
+                </div>
+            </div>
 
-                <label for="last-name">Nachname:</label>
-                <input type="text" id="last-name" name="last-name" v-model="model.patientLastname" />
+            <div class="block">
 
-                <label for="email">E-Mail:</label>
-                <input type="email" id="email" name="email" v-model="model.patientEmail" />
-
-                <button v-on:click="sendReservation()">Senden</button>
+                <div class="label">Uhrzeit:</div>
+                <div class="control">
+                    <input type="time" min="07:30" max="18:30" step="600" v-model="model.time" />
+                    <span class="validationError" v-if="validation.time">{{ validation.time }}</span>
+                </div>
+            </div>
+            <button v-on:click="sendReservation()">Senden</button>
         </div>
     </div>
 </template>
@@ -44,46 +96,48 @@ export default {
     data() {
         return {
             appointments: [],
-            model: {}
+            model: {},
+            validation: {}
         };
     },
 
     mounted() {
-        let start = new Date();
-        let end = new Date();
-        end.setMonth(end.getMonth() + 6);
-
-        while (start < end) {
-            let appointment = start.toLocaleDateString() + ' ' + start.toLocaleTimeString();
-            this.appointments.push(appointment);
-            start.setHours(start.getHours() + 1);
-        }
-
-        document.getElementById('date').valueAsDate = new Date();
+        this.initForm();
     },
 
     methods: {
+        initForm() {
+            this.model = {};
+            this.model.date = new Date(Date.now() + 86_400_000).toISOString().substring(0, 10);
+            this.model.time = "07:30";            
+        },
         async sendReservation() {
-          try {
-            await axios.post('appointment', this.model);
-          }
-          catch (e) {
-            if (e.response?.status == 400) {
-              // TODO: Validation
-              alert(JSON.stringify(e.response.data));
+            try {
+                this.validation = {};
+                this.model.time = `${this.model.time.substring(0, 5)}:00`;
+                await axios.post('appointment', this.model);
+                alert("Danke für Ihre Reservierung!");
+                this.initForm();
             }
-            else {
-              alert(`Server responded with Status ${e.response?.status}`);
+            catch (e) {
+                if (e.response?.status == 400) {
+                    if (typeof e.response.data.errors === "object")
+                        this.validation = Object.keys(e.response.data.errors).reduce((prev, key) => {
+                            const newKey = key.charAt(0).toLowerCase() + key.slice(1);
+                            prev[newKey] = e.response.data.errors[key][0];
+                            return prev;
+                        }, {});
+                    else
+                        alert(e.response.data);
+                }
+                else {
+                    alert(`Server responded with Status ${e.response?.status}`);
+                }
             }
-          }
         },
     },
 };
 </script>
-
-
-
-
 
 <style scoped>
 .p {
@@ -95,15 +149,57 @@ export default {
     padding: 5px;
 }
 
-.row {
+.terminView {
     margin-top: 5px;
     background-color: #eee;
     border-style: solid;
-    text-align: center;
     border-width: 1px;
     border-color: rgb(86, 83, 83);
     margin-left: 10px;
     margin-right: 10px;
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem;
+}
+
+@media (min-width: 40rem) {
+    .appointmentForm {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 1rem;
+        row-gap: 0.5rem;
+        width: 100%;
+        max-width: 70rem;
+        align-self: center;
+    }
+}
+
+.appointmentForm .block {
+    display: flex;
+    flex-direction: column;
+}
+
+.appointmentForm .inline {
+    display: flex;
+    flex-direction: row;
+    column-gap: 0.5rem;
+}
+
+.appointmentForm .inline div:nth-child(2) {
+    flex-grow: 1;
+}
+
+.appointmentForm input {
+    width: 100%;
+}
+
+.appointmentForm button {
+    grid-column: span 2;
+}
+
+.validationError {
+    color: red;
+    font-size: 80%;
 }
 </style>
 

@@ -1,0 +1,1 @@
+import{_ as t,o as n,c as o,F as s,a as e}from"./index-72564731.js";const a={},c=e("h1",null,"PRAXIS",-1),l=e("h2",null,"Todo",-1),_=e("ul",null,[e("li",null,"Nette Page gestalten.")],-1);function r(i,u){return n(),o(s,null,[c,l,_],64)}const f=t(a,[["render",r]]);export{f as default};

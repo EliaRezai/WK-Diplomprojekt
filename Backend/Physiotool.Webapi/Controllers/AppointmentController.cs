@@ -31,35 +31,18 @@ namespace Physiotool.Webapi.Controllers
         /// <summary>
         /// Reagiert auf POST /api/appointment
         /// </summary>
-        /// <param name="appointmentCmd"></param>
-        /// <returns></returns>
-
-        public bool IsValidEmail(string email)
-        {
-            var trimmedEmail = email.Trim();
-
-            if (trimmedEmail.EndsWith("."))
-            {
-                return false; 
-            }
-
-            try
-            {
-                var addr = new System.Net.Mail.MailAddress(email);
-                return addr.Address == trimmedEmail;
-            }
-            catch
-            {
-                return false;
-            }
-        }
-
         [HttpPost]
-        public IActionResult AddAppointment(NewAppointmentCmd appointmentCmd)
+        public IActionResult AddAppointment([FromBody] NewAppointmentCmd appointmentCmd)
         {
+            if (appointmentCmd.Date + appointmentCmd.Time < DateTime.Now.AddDays(1).Date)
+            {
+                return BadRequest("Eine Buchung ist erst für den nächsten Tag möglich.");
+            }
             var patient = _db.Patients.FirstOrDefault(p =>
-                p.Email == appointmentCmd.PatientEmail && p.Firstname == appointmentCmd.PatientFirstname &&
+                p.Email == appointmentCmd.PatientEmail &&
+                p.Firstname == appointmentCmd.PatientFirstname &&
                 p.Lastname == appointmentCmd.PatientLastname);
+
             if (patient is null)
             {
                 patient = new Patient(firstname: appointmentCmd.PatientFirstname,
@@ -70,14 +53,13 @@ namespace Physiotool.Webapi.Controllers
                     email: appointmentCmd.PatientEmail,
                     phone: appointmentCmd.PatientPhone);
                 _db.Patients.Add(patient);
-                try
-                {
-                    _db.SaveChanges();
-                }
-                catch (DbUpdateException e)
-                {
-                    return BadRequest(e.InnerException?.Message ?? e.Message);
-                }
+                _db.SaveChanges();
+            }
+            else
+            {
+                if (_db.Appointments.Any(a => a.PatientId == patient.Id
+                    && a.Date == appointmentCmd.Date && a.Time == appointmentCmd.Time))
+                    return BadRequest("Der Patient hat bereits einen Termin zum gleichen Datum und zur gleichen Zeit geplant.");
             }
 
             var appointment = new Appointment(date: appointmentCmd.Date,
@@ -86,96 +68,8 @@ namespace Physiotool.Webapi.Controllers
                 created: DateTime.UtcNow,
                 appointmentState: new AppointmentState(DateTime.UtcNow));
             _db.Appointments.Add(appointment);
-            try
-            {
-                _db.SaveChanges();
-            }
-            catch (DbUpdateException e)
-            {
-                return BadRequest(e.InnerException?.Message ?? e.Message);
-            }
-
+            _db.SaveChanges();
             return CreatedAtAction(nameof(AddAppointment), new { appointment.Guid });
         }
-
-        [HttpPost]
-        public IActionResult? Appointment([FromBody] NewAppointmentCmd appointmentCmd)
-        {
-
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-
-            if (appointmentCmd.Date < DateTime.Today || appointmentCmd.Time < TimeSpan.Zero)
-            {
-                return BadRequest("Der Termin und die Zeit müssen in der Zukunft liegen.");
-            }
-
-            if (!IsValidEmail(appointmentCmd.PatientEmail))
-            {
-                return BadRequest("Die Mail Adresse ist nicht gültig.");
-            }
-
-            var existingPatient = _db.Patients.FirstOrDefault(p =>
-                p.Email == appointmentCmd.PatientEmail &&
-                p.Firstname == appointmentCmd.PatientFirstname &&
-                p.Lastname == appointmentCmd.PatientLastname);
-
-            if (existingPatient != null)
-            {
-                var existingAppointment = _db.Appointments.FirstOrDefault(a =>
-                    a.PatientId == existingPatient.Id &&
-                    a.Date == appointmentCmd.Date &&
-                    a.Time == appointmentCmd.Time);
-
-                if (existingAppointment != null)
-                {
-                    return BadRequest(
-                        "Der Patient hat bereits einen Termin zum gleichen Datum und zur gleichen Zeit geplant.");
-                }
-            }
-
-
-            var patient = existingPatient ?? new Patient(firstname: appointmentCmd.PatientFirstname,
-                lastname: appointmentCmd.PatientLastname,
-                street: appointmentCmd.PatientStreet,
-                zip: appointmentCmd.PatientZip,
-                city: appointmentCmd.PatientCity,
-                email: appointmentCmd.PatientEmail,
-                phone: appointmentCmd.PatientPhone);
-
-            if (existingPatient == null)
-            {
-                _db.Patients.Add(patient);
-                try
-                {
-                    _db.SaveChanges();
-                }
-                catch (DbUpdateException e)
-                {
-                    return BadRequest(e.InnerException?.Message ?? e.Message);
-                }
-            }
-
-
-            var appointment = new Appointment(date: appointmentCmd.Date,
-                time: appointmentCmd.Time,
-                patient: patient,
-                created: DateTime.UtcNow,
-                appointmentState: new AppointmentState(DateTime.UtcNow));
-            return null!;
-
-        } 
     }
-
-    
-
 }
-
-        
-        
-        
-        
-    
