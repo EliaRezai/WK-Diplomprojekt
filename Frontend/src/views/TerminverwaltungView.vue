@@ -34,23 +34,99 @@ import axios from 'axios';
                     weekend: !d.isWorkingDay,
                     holiday: d.isPublicHoliday,
                     today: d.timestamp == today,
+                    
                 }"
+                
             >
+            
+            
                 <div class="dayHeader">
                     <div class="dayNumber">
                         {{ d.day }}<span v-if="d.month != currentMonth">.{{ d.month }}.</span>
+                        
                     </div>
                     <div class="holidayName">{{ d.schoolHolidayName }}</div>
+                    
                 </div>
                 <div class="appointments">
                     <div class="appointment" v-for="a in d.appointments" v-bind:key="a.guid">
                         {{ new Date(a.timestamp).toLocaleString('de-AT', { hour: '2-digit', minute: '2-digit' }) }}
                         {{ a.patientFirstname }} {{ a.patientLastname }}
+
+                        
                     </div>
+                    
                 </div>
+
+             <!-- Popup Buttons -->   
+            <button class="btn1" @click="showPopup">Daten hinzufügen</button>
+            <button class="btn2" @click="showDeletePopup">Daten löschen</button>
             </div>
         </div>
+        
+
+<!-- Hier wird ein Popup aufgerufen um Daten zu löschen, über das Backend sollten die Daten aus der Datenbank entfernt werden -->
+    <div v-if="popupDelete" class="popup">
+      <div class="popup-inner">
+        <h2>Daten löschen</h2>
+
+<form @submit.prevent="deleteForm">
+        
+         <div>
+            <p>Geben sie die ID des zu löschenden Termins ein</p>
+            <label style="margin-left: 62px;" for="name">Appointment-ID:</label>
+            <input id="name" v-model="formData.AppointmendID" type="text">
+          </div>
+    
+          <div>
+            <label for="name">Zusätzliche Information:</label>
+            <input id="name" v-model="formData.Infos" type="text">
+          </div>
+
+          <button class="btn3" type="submit">Löschen</button>
+        </form>
+
+        <button class="btn4" @click="closeDeletePopup">Abbrechen</button>
+
+        
+      </div>
     </div>
+
+<!-- Hier wird ein Popup aufgerufen um zusätzliche Daten bzw. Dauer eines Termines festzulegen, über das Backend sollten die Daten gespeichert werden -->
+    <div v-if="popupVisible" class="popup"> 
+      <div class="popup-inner">
+        <h2>Daten hinzufügen</h2>
+
+<form @submit.prevent="submitForm">
+        <div>
+    <label style="margin-right: 13px;" for="duration">Termin Dauer:</label>
+    <select v-model="duration" id="duration">
+      <option value="30">30 Minuten</option>
+      <option value="45">45 Minuten</option>
+      <option value="60">60 Minuten</option>
+    </select>
+  </div>
+
+         <div>
+            <label style="margin-left: 62px;" for="name">Appointment-ID:</label>
+            <input id="name" v-model="formData.AppointmendID" type="text">
+          </div>
+    
+          <div>
+            <label for="name">Zusätzliche Information:</label>
+            <input id="name" v-model="formData.Infos" type="text">
+          </div>
+
+          <button class="btn3" type="submit">Speichern</button>
+        </form>
+
+        <button class="btn4" @click="closePopup">Abbrechen</button>
+
+        
+      </div>
+    </div>
+  </div>
+
 </template>
 
 
@@ -126,8 +202,75 @@ import axios from 'axios';
 .appointment {
     cursor: pointer;
 }
+
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-inner {
+  background: white;
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.btn1, .btn3 {
+  background-color: #2196f3; /* Blaue Farbe */
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 10px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  
+}
+
+.btn4, .btn2 {
+  background-color: #f32128; /* Rote Farbe */
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 10px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  
+}
+
+.btn1:hover, .btn3:hover{
+  background-color: #0d8bf5; /* Dunklere blaue Farbe bei Hover */
+}
+
+.btn4:hover, .btn2:hover{
+  background-color: #ed5356; /* Dunklere rote Farbe bei Hover */
+}
+
+@media only screen and (max-width: 600px) {
+  .btn1, .btn2, .btn3{
+    padding: 10px 20px; /* Kleinere Größe bei kleineren Bildschirmen */
+  }
+}
 </style>
+
 <script>
+
 export default {
     data() {
         return {
@@ -136,6 +279,13 @@ export default {
             currentMonth: 1,
             today: Math.floor(Date.now() / 86_400_000) * 86_400_000,
             days: [],
+            popupVisible: false,
+      formData: {
+        Termindauer: '',
+        AppointmendID: '',
+        Infos: '',
+
+      },
         };
     },
     components: {},
@@ -159,7 +309,67 @@ export default {
             this.currentMonth = (newMonth % 12) + 1;
             await this.loadCalendar();
         },
+
+       
+
+      async deleteForm() {
+        if (confirm('Sind Sie sicher, dass Sie die Daten löschen möchten?')) {
+            // Hier wird die Funktion zum Löschen der Daten aufgerufen
+          // Zum Beispiel: this.$axios.delete(`/api/data/${this.dataId}`)
+      axios.delete('/api/data', this.formData) // Hier muss die URL zur API stehen
+        .then(response => {
+          console.log(response.data); // Hier wird die Antwort der API verarbeitet
+          this.closePopup(); // Das Popup wird nach dem Speichern geschlossen
+        })
+        .catch(error => {
+          console.log(error);
+        });
+        }
+      },
+
+       //Frühere Methode zum löschen von Daten! 
+       //----------------------------------------------------------------------------------------------------------
+      // async deleteData() {
+      //  if (confirm('Sind Sie sicher, dass Sie die Daten löschen möchten?')) {
+          // Hier wird die Funktion zum Löschen der Daten aufgerufen
+          // Zum Beispiel: this.$axios.delete(`/api/data/${this.dataId}`)
+      //    this.closePopup();
+      //  axios.delete('/api/data') // Hier muss die URL zur API stehen
+      
+      //  .then(response => {
+      //    console.log(response.data); // Hier wird die Antwort der API verarbeitet
+      //  })
+      //  .catch(error => {
+      //    console.log(error);
+      //  });
+      //  }
+      // },
+     //-----------------------------------------------------------------------------------------------------------
+     showPopup() {
+      this.popupVisible = true;
     },
+    closePopup() {
+      this.popupVisible = false;
+    },
+    showDeletePopup() {
+        this.popupVisible = true;
+    },
+    closeDeletePopup() {
+      this.popupVisible = false;
+    },
+
+     submitForm() {
+      axios.post('/api/data', this.formData) // Hier muss die URL zur API stehen
+        .then(response => {
+          console.log(response.data); // Hier wird die Antwort der API verarbeitet
+          this.closePopup(); // Das Popup wird nach dem Speichern geschlossen
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    
+    },
+},
 };
 </script>
 
