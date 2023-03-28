@@ -71,5 +71,15 @@ namespace Physiotool.Webapi.Controllers
             _db.SaveChanges();
             return CreatedAtAction(nameof(AddAppointment), new { appointment.Guid });
         }
+        [HttpDelete("{guid}")]
+        public IActionResult DeleteData(Guid guid)
+        {
+            var data = _db.Appointments.FirstOrDefault(d => d.Guid == guid);
+            if (data == null) return NotFound();
+            if (data.AppointmentState is DeletedAppointmentState) { return BadRequest(); }
+            data.AppointmentState = new DeletedAppointmentState();
+            _db.SaveChanges();
+            return Ok();
+        }
     }
 }
