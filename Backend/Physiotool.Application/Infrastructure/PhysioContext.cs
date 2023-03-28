@@ -17,6 +17,9 @@ namespace Physiotool.Application.Infrastructure
         public DbSet<User> Users => Set<User>();
         public DbSet<Patient> Patients => Set<Patient>();
         public DbSet<Appointment> Appointments => Set<Appointment>();
+        public DbSet<AppointmentState> AppointmentStates => Set<AppointmentState>();
+        public DbSet<DeletedAppointmentState> DeletedAppointmentStates => Set<DeletedAppointmentState>();
+        public DbSet<ConfirmedAppointmentState> ConfirmedAppointmentStates => Set<ConfirmedAppointmentState>();
         public PhysioContext(DbContextOptions<PhysioContext> opt) : base(opt)
         { }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
