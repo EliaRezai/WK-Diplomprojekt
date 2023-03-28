@@ -14,9 +14,7 @@ namespace Physiotool.Application.Model
         {
             Created = DateTime.UtcNow;
         }
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int AppointmentId { get; set; }
+        public int Id { get; set; }
         public Appointment Appointment { get; private set; } = default!;
         public DateTime Created { get; set; }
     }

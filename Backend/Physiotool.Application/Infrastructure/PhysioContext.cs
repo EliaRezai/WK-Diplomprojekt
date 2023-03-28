@@ -24,11 +24,6 @@ namespace Physiotool.Application.Infrastructure
         { }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Appointment>()
-                .HasOne(a => a.AppointmentState)
-                .WithOne(a => a.Appointment)
-                .HasForeignKey<AppointmentState>(a => a.AppointmentId);
-
             foreach (var entityType in modelBuilder.Model.GetEntityTypes())
             {
                 foreach (var key in entityType.GetForeignKeys())

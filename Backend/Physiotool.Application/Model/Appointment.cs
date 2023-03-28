@@ -30,6 +30,7 @@ namespace Physiotool.Application.Model
         public int PatientId { get; set; }
         public Patient Patient { get; set; }
         public DateTime Created { get; set; }
+        public int AppointmentStateId { get; set; }
         public AppointmentState AppointmentState { get; set; }
     }
     
