@@ -1,16 +1,20 @@
 <template>
-    <div class="terminView">
-        <!-- Load Font Awesome Icon Library -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+   
+   <div class="description">
 
-        <div class="description">
+            <h1>Terminauswahl</h1>
             <p>
                 Sehr geehrte Patienten! In der folgenden Tabelle sehen Sie Termine, welche für Sie zu Verfügung stehen.
                 Der Button Termin ermöglicht es Ihnen, eine zeitliche Auswahl zu treffen.
                 Haben Sie sich für einen Termin entschieden, drücken Sie auf den Button "Reservieren" in der Zeile des
                 gewünschten Termins.
             </p>
-        </div>
+    </div>
+    <div class="terminView">
+        <!-- Load Font Awesome Icon Library -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+       
+      
         <div class="appointmentForm">
             <div class="block">
                 <div class="label">Vorname:</div>
@@ -83,11 +87,72 @@
                 <div class="control">
                     <input type="time" min="07:30" max="18:30" step="600" v-model="model.time" />
                     <span class="validationError" v-if="validation.time">{{ validation.time }}</span>
+
                 </div>
             </div>
             <button v-on:click="sendReservation()">Senden</button>
         </div>
+
+        
     </div>
+
+    <div class="newfooter">
+        <link rel="stylesheet" href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css />
+        <div class="newcontainer">
+            <div class="newrow">
+
+                <div class="newfooter-col">
+                    <h4>Links</h4>
+                    <ul>
+                        <li><a href="#">Startseite</a></li>
+                        <li><a href="#">Therapien</a></li>
+                        <li><a href="#">Termin buchen</a></li>
+                        <li><a href="#">Termin verwalten</a></li>
+                        <li><a href="#">Login</a></li>
+
+                    </ul>
+                </div>
+
+                <div class="newfooter-col">
+                    <h4>Adresse</h4>
+                    <ul>
+                        <li><a href="#">Alte Poststraße 14e</a></li>
+                        <li><a href="#">Maria Ellend </a></li>
+                        <li><a href="#">2402</a></li>
+                        <li><a href="#">Österreich</a></li>
+                       
+                                   
+                     </ul>
+                </div>
+
+                <div class="newfooter-col">
+                    <h4>Kontakte</h4>
+                    <ul>
+                        <li><a href="#">+43 676 3285511</a></li>
+                        <li><a href="#">+43 676 8885341</a></li>
+
+                        <li><a href="#">marcela.nikolic@gmx.at</a></li>
+                                      
+                    </ul>
+                </div>
+
+                <div class="newfooter-col">
+                    <h4>follow us</h4>
+                    <div class="social-links">
+
+                        <a href="#"><i class="fab fa-facebook-f"></i></a> 
+                        <a href="#"><i class="fab fa-twitter"></i></a> 
+                        <a href="#"><i class="fab fa-instagram"></i></a> 
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a> 
+
+                    </div>
+                   
+                </div>
+
+            </div>
+        </div>
+    </div>
+  
 </template>
 
 <script>
@@ -138,71 +203,6 @@ export default {
     },
 };
 </script>
-
-<style scoped>
-.p {
-    text-align: center;
-    margin-top: 20px;
-    display: inline;
-    width: 100px;
-    height: 100px;
-    padding: 5px;
-}
-
-.terminView {
-    margin-top: 5px;
-    background-color: #eee;
-    border-style: solid;
-    border-width: 1px;
-    border-color: rgb(86, 83, 83);
-    margin-left: 10px;
-    margin-right: 10px;
-    display: flex;
-    flex-direction: column;
-    padding: 0.5rem;
-}
-
-@media (min-width: 40rem) {
-    .appointmentForm {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        column-gap: 1rem;
-        row-gap: 0.5rem;
-        width: 100%;
-        max-width: 70rem;
-        align-self: center;
-    }
-}
-
-.appointmentForm .block {
-    display: flex;
-    flex-direction: column;
-}
-
-.appointmentForm .inline {
-    display: flex;
-    flex-direction: row;
-    column-gap: 0.5rem;
-}
-
-.appointmentForm .inline div:nth-child(2) {
-    flex-grow: 1;
-}
-
-.appointmentForm input {
-    width: 100%;
-}
-
-.appointmentForm button {
-    grid-column: span 2;
-}
-
-.validationError {
-    color: red;
-    font-size: 80%;
-}
-</style>
-
 
 
 

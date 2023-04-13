@@ -3,34 +3,35 @@
         <div class="about-us">
             <div class="row">
                 <div class="a-col">
-                    <h1>Herzlich Willkommen bei uns!</h1>
+                    <h1>Professionelle Massage in wiener Innenstadt</h1>
                     <p>
-                        Es gibt ein paar Fälle, in denen Du Text aus einer Bilddatei <br />
-                        extrahieren wollen würdest. Welches Dateiformat Dein Bild hat, s<br />
-                        pielt hier keine Rolle, Du kannst einfach aus JPG, PNG, TIF, WEBP und mehr konvertieren.
+                      Durch Massagen in der wiener innenstadt Physiotherapie lassen sich
+                      muskuläre Verspannungen, Verklebungen, oder Verhärtungen lösen.
+                      Dadurch verbessert sich dein körperliches Wohlbefinden, der Verspannungsschmerzen lässt nach 
+                      und du kannst wieder besser schlafen.
+
                     </p>
                     <br />
-                    <a href="" class="hero-btn red-btn">Mehr Erfahren</a>
                 </div>
             </div>
         </div>
 
         
         <div class="h">
-            <img src="@/assets/images/77.jpg" onclick="oprnFullImg(this.src)"/>
+            <img src="@/assets/images/0.jpg" onclick="oprnFullImg(this.src)"/>
+            <img src="@/assets/images/01.jpg" onclick="oprnFullImg(this.src)"/>
             <img src="@/assets/images/44.jpg" onclick="oprnFullImg(this.src)"/>
+            <img src="@/assets/images/05.jpg" onclick="oprnFullImg(this.src)"/>
+            <img src="@/assets/images/06.png" onclick="oprnFullImg(this.src)"/>
+            <img src="@/assets/images/012.png" onclick="oprnFullImg(this.src)"/>
+            <img src="@/assets/images/77.jpg" onclick="oprnFullImg(this.src)"/>
             <img src="@/assets/images/66.jpg" onclick="oprnFullImg(this.src)"/>
-            <img src="@/assets/images/77.jpg" onclick="oprnFullImg(this.src)"/>
-            <img src="@/assets/images/66.jpg" onclick="oprnFullImg(this.src)"/>
-            <img src="@/assets/images/77.jpg" onclick="oprnFullImg(this.src)"/>
-            <img src="@/assets/images/44.jpg" onclick="oprnFullImg(this.src)"/>
-            <img src="@/assets/images/44.jpg" onclick="oprnFullImg(this.src)"/>
         </div>
 
         <br />
 
         <div class="container2">
-            <h2>Suche dein Passender Traphie aus</h2>
+            <h1>Suche dein Passender Traphie aus</h1>
             <div class="price-row">
                 <div class="price-col">
                     <p>Packet 1</p>
@@ -47,27 +48,27 @@
                 </div>
                 <div class="price-col">
                     <p>Packet 2</p>
-                    <h3>150€ <span>/ Sitzung</span></h3>
+                    <h3>100€ <span>/ Sitzung</span></h3>
                     <ul>
                         <li>Osteopathie</li>
                         <li>Das Muskuloskelettale</li>
                         <li>Das Viscerale System</li>
                         <li>Das Craniosacrale</li>
-                        <li>45 - Sitzungen</li>
-                        <li></li>
+                        <li>Die klassische Massage</li>
+                        <li>45 - Minuten</li>
                     </ul>
                     <button>Buchen</button>
                 </div>
                 <div class="price-col">
                     <p>Packet 3</p>
-                    <h3>250€ <span>/ Sitzung</span></h3>
+                    <h3>120€ <span>/ Sitzung</span></h3>
                     <ul>
                         <li>Personal Training</li>
                         <li>Muskelaufbau</li>
                         <li>Konditionstraining</li>
                         <li>Koordinationstraining</li>
+                        <li>Die klassische Massage</li>
                         <li>45 Minuten</li>
-                        <li></li>
                     </ul>
                     <button>Buchen</button>
                 </div>
@@ -75,34 +76,62 @@
         </div>
          <!------- footer ------>
 
-         <div class="footer">
-            <div class="col-1">
-                <h3>Wichtige Links</h3>
-                <a href="#">Startseite</a>
-                <a href="#">Praxis</a>
-                <a href="#">Therapien</a>
-                <a href="#">Öffnungszeiten</a>
-            </div>
+         <div class="newfooter">
+        <link rel="stylesheet" href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css />
+        <div class="newcontainer">
+            <div class="newrow">
 
-            <div class="col-2">
-                <h3>NEWSLETTER</h3>
-                <form>
-                    <input type="email" placeholder="Ihre Email Adresse" required />
-                    <br />
-                    <button type="submit">Senden</button>
-                </form>
-            </div>
+                <div class="newfooter-col">
+                    <h4>Links</h4>
+                    <ul>
+                        <li><a href="#">Startseite</a></li>
+                        <li><a href="#">Therapien</a></li>
+                        <li><a href="#">Termin buchen</a></li>
+                        <li><a href="#">Termin verwalten</a></li>
+                        <li><a href="#">Login</a></li>
 
-            <div class="col-3">
-                <h3>Kontakte</h3>
+                    </ul>
+                </div>
 
-                <p>
-                    Alte Poststraße 14e <br />
-                    Maria Ellend 2402 Österreich <br />
-                    +43 676 3285511
-                </p>
+                <div class="newfooter-col">
+                    <h4>Adresse</h4>
+                    <ul>
+                        <li><a href="#">Alte Poststraße 14e</a></li>
+                        <li><a href="#">Maria Ellend </a></li>
+                        <li><a href="#">2402</a></li>
+                        <li><a href="#">Österreich</a></li>
+                       
+                                   
+                     </ul>
+                </div>
+
+                <div class="newfooter-col">
+                    <h4>Kontakte</h4>
+                    <ul>
+                        <li><a href="#">+43 676 3285511</a></li>
+                        <li><a href="#">+43 676 8885341</a></li>
+
+                        <li><a href="#">marcela.nikolic@gmx.at</a></li>
+                                      
+                    </ul>
+                </div>
+
+                <div class="newfooter-col">
+                    <h4>follow us</h4>
+                    <div class="social-links">
+
+                        <a href="#"><i class="fab fa-facebook-f"></i></a> 
+                        <a href="#"><i class="fab fa-twitter"></i></a> 
+                        <a href="#"><i class="fab fa-instagram"></i></a> 
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a> 
+
+                    </div>
+                   
+                </div>
+
             </div>
         </div>
+    </div>
     </div>
 </template>
 
@@ -117,11 +146,7 @@ export default {
 </script>
 
 <style scoped>
-*{
-  margin: 0;
-  padding: 0;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
+
 .header {
   min-height: 100vh ;
   width: 100%;
@@ -187,6 +212,7 @@ nav img{
   }
   .text-box h1{
     font-size: 62px;
+    
   }
 
   .text-box p{
@@ -469,6 +495,7 @@ iframe{
 
 .a-col h1{
   padding-top: 0;
+  padding-bottom: 1%;
 }
 
 .a-col p{
@@ -493,9 +520,7 @@ iframe{
   min-height: 100vh;
 }
 
-.container2 h2{
-  color:#89c0e3;
-  font-size: 30px;
+.container2 h1{
   padding: 50px 0;
   text-align: center;
 }
@@ -510,13 +535,22 @@ iframe{
 
 }
 
+.price-col:hover{
+  filter: grayscale(0);
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+
 .price-col{
-  background: #303756;
+  background: #94a3e897;
   padding: 5% 15%;
   border-radius: 10px;
-  color: #dadee1;
+  color: #1e2648;
   text-align: center;
   margin: 0 10px;
+  filter: grayscale(100%);
+  transition: transform 0.5s;
 }
 
 .price-col p{
@@ -536,7 +570,7 @@ iframe{
 .price-col ul{
   text-align: left;
   margin: 20px 0;
-  color: #ddd;
+  color: #1e2648;
   list-style: none ;
 }
 
@@ -556,9 +590,9 @@ margin-right: 8px;
   width: 100%;
   padding: 14px 0;
   background: transparent;
-  color: #ddd;
+  color: #1e2648;
   font-size: 15px;
-  border: 1px solid #f2f4f9;
+  border: 1px solid #1e2648;
   border-radius: 6px;
   margin-top: 30px;
   cursor: pointer;  
@@ -578,6 +612,7 @@ margin-right: 8px;
 
 .h img{
   width: 100%;
+  height: 100%;
   cursor: pointer;
   transition: 0.4s;
 }
