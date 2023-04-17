@@ -31,6 +31,8 @@
             <!-- <i class="fa fa-bars"></i> -->
         </nav>
     </div>
+
+    
 </template>
 <script>
 export default {
@@ -45,6 +47,9 @@ export default {
     methods: {
 
     }
+
+    
+
 }
 </script>
 <style scoped>
