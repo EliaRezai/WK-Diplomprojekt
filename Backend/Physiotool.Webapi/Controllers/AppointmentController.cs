@@ -27,6 +27,83 @@ namespace Physiotool.Webapi.Controllers
         {
             return Ok(_db.Patients.ToList());
         }
+        
+        
+        [HttpGet("available")]
+
+        public IActionResult GetFreeAppointments([FromQuery] DateTime day)
+
+        {
+
+            var unconfirmedDuration = TimeSpan.FromHours(1);
+
+            var startHour = 7.5; // Start der Ordination um 7:30
+
+            // In a.Date steht nur der Tag (mit 0:00 als Zeit), daher vergleichen wir einmal den gesuchten Tag.
+
+            var bookedAppointments = _db.Appointments.Include(a => a.AppointmentState)
+
+                .Where(a => a.Date == day && !(a.AppointmentState is DeletedAppointmentState))
+
+                .ToList();
+
+            // Je nach State des Appointments haben wir eine definierte Dauer (Confirmed) oder wir nehmen
+
+            // die Standarddauer.
+
+            var appointmentTimes = bookedAppointments.Select(a => a.AppointmentState switch
+
+            {
+
+                ConfirmedAppointmentState s => new { Start = a.Time, End = a.Time + s.Duration },
+
+                _ => new { Start = a.Time, End = a.Time + unconfirmedDuration }
+
+            }).ToList();
+
+ 
+
+            // 8 Stunden x 1/2 Stunde Raster = 16 Zeitslots
+
+            var freeTimeslots = Enumerable.Range(0, 8 * 2)
+
+                .Select(slot => TimeSpan.FromHours(startHour + slot / 2.0))
+
+                // Ein Zeitslot ist frei, wenn der Start aller bestehenden Termine nachher ist
+
+                // oder das Ende vorher ist (Intervallschachtelungsprinzip).
+
+                .Where(time => appointmentTimes.All(aTime => aTime.End <= time || aTime.Start > time))
+
+                .ToList();
+
+            return Ok(freeTimeslots.Select(t => t.ToString(@"hh\:mm")));
+
+        }
+        
+        
+        
+        
+        
+        
+       /// [HttpGet("available")]
+        ///public IActionResult GetAvailableAppointments(DateTime startDate, DateTime endDate)
+       /// {
+        ///    var bookedAppointments = _db.Appointments.Where(a => a.Date >= startDate && a.Date <= endDate)
+            ///    .Select(a => a.Time)
+             ///   .ToList();
+    
+           /// var availableAppointments = Enumerable.Range(8, 12)
+          ///      .SelectMany(hour => new[] { 0, 30 }.
+             ///       Select(minute => new TimeSpan(hour, minute, 0)))
+             ///   .Where(time => !bookedAppointments.Contains(time))
+            ///    .ToList();
+
+          ///  return Ok(availableAppointments);
+      ///  }
+       
+
+        
 
         /// <summary>
         /// Reagiert auf POST /api/appointment
