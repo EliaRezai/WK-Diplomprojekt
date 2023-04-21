@@ -1264,9 +1264,126 @@ font-size:medium;
 
 .user-pic.active-pic{
   width: 100px;
-  border: 3px solid #003cff;
+
+}
+
+.section2{
+  width: 80%;
+  margin: 80px auto;
+}
+
+.title2{
+  text-align: center;
+  font-size: 4vmin;
+  color: #192936;
+}
+
+.row3{
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.row3 .col3{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.row3 .col3 img{
+  width: 80%;
+  height: 80%;
+}
+
+.section2 .row3{
+  margin-top: 50px;
+}
+
+.col3 h4{
+  font-size: 3vmin;
+  color: #192936;
+  margin: 20px auto;
 
 }
 
 
+p{
+  color: #060606;
+  padding: 0px 40px;
+}
 
+.explore3{
+  width: 100%;
+  height: 100vh;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)), url('@/assets/images/010.jpg');
+  display: flex;
+  align-items: center;
+}
+
+.ec{
+  width: 65%;
+  padding: 50px;
+  color: #dadee1;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+}
+
+.ec h1{
+  font-size: 7vmin;
+  margin: 50px;
+
+}
+
+.ec .line{
+  margin-bottom: 50px;
+  color: yellowgreen;
+}
+
+.ec p{
+  color: white;
+  padding: 0px 40px;
+
+}
+
+.row4 .content-col{
+  width: 40%;
+  position: relative;
+  left: 20px;
+  bottom: -270px;
+}
+
+.content-col h1{
+  padding-top: 0;
+  color: #192936;
+  margin: 6px;
+}
+
+.content-col p{
+  padding: 0px 20px;
+}
+
+
+.row4 .image-col{
+  width: 48%;
+  position: relative;
+  left: 48%;
+  align-items: center;
+  display: flex;
+}
+.tours .image-gallery4{
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  align-items: center;
+}
+
+.image-gallery4 img{
+  max-width: 320px;
+  margin: 10px;
+}

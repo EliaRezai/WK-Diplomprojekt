@@ -1,68 +1,67 @@
 <template>
-  <div>
+  
+<div class="ppraxis">
 
-    <div class="userP">
-    <img src="@/assets/images/07.png" />
+  <!--Zewi bilder mit schrieft-->
 
-    <div class="infoP">
-      <h1>test test</h1>
-      <p>Hallo. Ich bin ein kleiner Blindtext. Und zwar schon so lange <br>
-        Es war nicht leicht zu verstehen, was es bedeutet, ein blinder <br>
-        Man ergibt keinen Sinn. Wirklich keinen Sinn. Man wird  <br>
-        eingeschoben und rumgedreht</p>
+<div class="section2">
+  <div class="title2">
+    <h1>Unsere Praxis</h1>
 
-      <a href="#">Termin Buchen</a>
+    <div class="line">
+
     </div>
 
   </div>
-  <div class="gallery1-wrap">
-    <img src="@/assets/images/w.png" id="backBtn" />
-    <div class="gallery1">
-    <div>
-      <span>
-        <img src="@/assets/images/0.jpg" />
-      </span>
-      <span>
-        <img src="@/assets/images/01.jpg" />
-      </span>
-      <span>
-        <img src="@/assets/images/03.jpg" />
-      </span>
+  <div class="row3">
+    <div class="col3">
+    <img src="@/assets/images/011.jpg" />
+
+    <h4>Kniegelenk</h4>
+    <p>Abgesehen von Unterschenkelbrüchen (Frakturen an Schien- und/oder Wadenbein, letzteres ist etwa bei der Sprunggelenksfraktur betroffen) und operativen Beinachsenkorrekturen (Umstellungsosteotomien) sind der Unterschenkel beziehungsweise die Wade häufig ein Ort muskulärer Beschwerden und chronischer Überlastung.
+</p>
+  </div>
+
+  <div class="col3">
+    <img src="@/assets/images/01.jpg" />
+
+    <h4>Schulter</h4>
+    <p>Die Schulter umfasst eigentlich vier zusammenwirkende Gelenke und ist aufgrund ihres großen Bewegungsumfanges bei vergleichsweise geringer Stabilität für Beschwerden anfällig. Dies können einerseits akute Verletzungen (häufig als Sturzfolge) wie Schulterluxation, Schultereckgelenkssprengung oder Sehnenabrisse sein.</p>
+  </div>
+
+
+  </div>
+</div>
+
+<div class="explore3">
+  <div class="ec">
+    <h1>Unser Leistungsspektrum</h1>
+    <div class="line"></div>
+<p>Physiotherapie stellt die Funktionsfähigkeit des menschlichen Bewegungsapparates (Muskel, Sehnen, Bänder, Knochen), wieder her, verbessert und erhält sie. Soweit die offizielle Definition.Damit Ihr Euch mehr darunter vorstellen könnt, haben wir eine Übersicht über typische Anwendungsgebiete von Kopf bis Fuß zusammengestellt.
+</p>
+  </div>
+</div>
+
+<div class="tours">
+  <div class="row4">
+    <div class="content-col">
+      <h1>Detaillierte Befunderhebung</h1>
+      <p>
+        Nur eine persönliche und detaillierte Befunderhebung führt zu einer effizienten und nachhaltigen Behandlung Ihrer Beschwerden. Daher werden nach einem kurzen Gespräch alle für Ihr Anliegen relevanten Strukturen des Bewegungsapparates untersucht und anschließend die geplante Vorgehensweise erklärt.
+
+
+      </p>
     </div>
-
-    <div>
-      <span>
-        <img src="@/assets/images/05.jpg" />
-      </span>
-      <span>
-        <img src="@/assets/images/06.png" />
-      </span>
-      <span>
-        <img src="@/assets/images/07.png" />
-      </span>
+    <div class="image-col">
+      <div class="image-gallery4">
+        <img src="@/assets/images/017.jpeg" />
+        <img src="@/assets/images/013.jpg" />
+        <img src="@/assets/images/014.jpg" />
+        <img src="@/assets/images/015.jpg" />
+      </div>
     </div>
   </div>
-
-    <img src="@/assets/images/wz.png" id="nextBtn" />
-
-  </div>
-  <div class="campus">
-            <h1>Unsere Physiotherapeuten in Wien</h1>
-            <p>
-                Aufgrund unterschiedlicher Spezialisierungen bietet das Team ein breites 
-                Behandlungsspektrum gegen Schmerzen, Funktionsstörungen und Erkrankungen des 
-                Bewegungsapparates und hilft auf
-                diese Weise, dessen Gesundheit wiederherzustellen!
-            </p>
-
-        </div>
-
-  <div class="row"> 
-                <div class="campus-col">
-                    <img src="@/assets/images/22.jpg" />
-                </div>
-                <h4>Dr. Frau Musterman</h4>
-  </div>
+</div>
 
 <div class="newfooter">
         <link rel="stylesheet" href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css />
@@ -121,7 +120,6 @@
         </div>
     </div>
 
-  
-</div>
+  </div>
 </template>
 
