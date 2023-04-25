@@ -18,6 +18,8 @@
     "vuex": "^4.1.0"
   },
   "devDependencies": {
+    "@rushstack/eslint-patch": "^1.2.0",
+    "@vue/eslint-config-prettier": "^7.1.0",    
     "@vitejs/plugin-vue": "^4.1.0",
     "eslint": "^8.36.0",
     "eslint-plugin-vue": "^9.10.0",

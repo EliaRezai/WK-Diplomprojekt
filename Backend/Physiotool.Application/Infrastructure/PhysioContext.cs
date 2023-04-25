@@ -20,8 +20,10 @@ namespace Physiotool.Application.Infrastructure
         public DbSet<AppointmentState> AppointmentStates => Set<AppointmentState>();
         public DbSet<DeletedAppointmentState> DeletedAppointmentStates => Set<DeletedAppointmentState>();
         public DbSet<ConfirmedAppointmentState> ConfirmedAppointmentStates => Set<ConfirmedAppointmentState>();
+
         public PhysioContext(DbContextOptions<PhysioContext> opt) : base(opt)
         { }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             foreach (var entityType in modelBuilder.Model.GetEntityTypes())
@@ -63,6 +65,7 @@ namespace Physiotool.Application.Infrastructure
             SaveChanges();
             return users;
         }
+
         public List<Patient> SeedPatients(Faker faker)
         {
             // Demopatienten erstellen
@@ -85,14 +88,16 @@ namespace Physiotool.Application.Infrastructure
             SaveChanges();
             return patients;
         }
+
         public List<Appointment> SeedAppointments(Faker faker, List<Patient> patients)
         {
             // Termine zu den Patienten erstellen. Dafür erstellen wir 100 Termine und weisen sie
             // jeweils einen zufälligen Patienten zu.
             var appointments = new Faker<Appointment>("de").CustomInstantiator(f =>
             {
-                // Ein Termin wird zwischen 1.9.2020 und 1.6.2022 erstellt.
-                var date = f.Date.Between(new DateTime(2020, 9, 1), new DateTime(2022, 6, 1)).Date;
+                // Ein Termin wird zwischen 1.1. letzten Jahres bis 1 Monat im Voraus erstellt. 1.9.2021 und 1.6.2023 erstellt.
+                var today = DateTime.UtcNow.Date;
+                var date = f.Date.Between(new DateTime(today.Year - 1, 1, 1), today.AddDays(31)).Date;
                 if (date.DayOfWeek == DayOfWeek.Saturday || date.DayOfWeek == DayOfWeek.Sunday)
                     date = date.AddDays(2);
                 // Termine nur zu vollen 1/4 Stunden erstellen.
@@ -104,7 +109,7 @@ namespace Physiotool.Application.Infrastructure
                 {
                     2 => new ConfirmedAppointmentState(
                         created: appointmentCreated.AddMinutes(f.Random.Int(30, 5 * 1440)),
-                        duration: TimeSpan.FromMinutes(f.Random.Int(2, 8) * 15)),
+                        duration: TimeSpan.FromMinutes(f.Random.Int(2, 8) * 15), infotext: f.Lorem.Sentence(4).OrNull(f, 0.5f)),
                     3 => new DeletedAppointmentState(appointmentCreated.AddMinutes(f.Random.Int(30, 5 * 1440))),
                     _ => new AppointmentState(appointmentCreated)
                 };
