@@ -7,6 +7,9 @@ using Physiotool.Application.Infrastructure;
 using Physiotool.Application.Model;
 using System;
 using System.Linq;
+using System.Net.Http;
+using System.Text.Json;
+using System.Text;
 using System.Text.Json.Nodes;
 using System.Threading.Tasks;
 
@@ -158,5 +161,32 @@ namespace Physiotool.Webapi.Controllers
             _db.SaveChanges();
             return Ok();
         }
+
+        [HttpPost("{guid}")]
+        public async Task<IActionResult> ConfirmAppointment(int guid, [FromBody] AppointmentState duration)
+        {
+            try
+            {
+                var appointment = await _db.Appointments.FindAsync(guid); // Ladet Termin aus der Datenbank
+
+                if (appointment == null) // Überprüfen, ob der Termin existiert
+                {
+                    return NotFound(); // 404-Antwort zurück, wenn der Termin nicht gefunden wurde
+                }
+
+                appointment.AppointmentState = duration; // Festlegen der Dauer des Termins
+                appointment.AppointmentState = AppointmentState.Confirmed; // AppointmentState auf Confirmed
+
+                await _db.SaveChangesAsync(); // Speichern der Änderungen in der Datenbank
+
+                return Ok(); // Erfolgreiche Antwort zurück
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Fehler beim Bestätigen des Termins");
+                return StatusCode(500); // Gibt Fehlerantwort zurück
+            }
+        }
+    }
     }
 }

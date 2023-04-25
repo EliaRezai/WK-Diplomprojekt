@@ -276,8 +276,8 @@ export default {
     data() {
         return {
             months: ['', 'Jänner', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'],
-            currentYear: 2021,
-            currentMonth: 1,
+            currentYear: 2023,
+            currentMonth: 4,
             today: Math.floor(Date.now() / 86_400_000) * 86_400_000,
             days: [],
             popupVisible: false,
