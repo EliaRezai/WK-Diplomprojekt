@@ -45,28 +45,45 @@ namespace Physiotool.Application.Infrastructure
             }
         }
 
-        public void Seed()
-        {
-            Randomizer.Seed = new Random(1511);
-            var faker = new Faker("de");
-            SeedUsers(faker);
-            var patients = SeedPatients(faker);
-            SeedAppointments(faker, patients);
-        }
-
-        public List<User> SeedUsers(Faker faker)
+        /// <summary>
+        /// Initialize the database with some values (holidays, ...).
+        /// Unlike Seed, this method is also called in production.
+        /// </summary>
+        private void Initialize()
         {
             var users = new List<User>
             {
                 new User(username: "admin", initialPassword: "1111")
-                {Guid = faker.Random.Guid() }
             };
             Users.AddRange(users);
             SaveChanges();
-            return users;
         }
 
-        public List<Patient> SeedPatients(Faker faker)
+        /// <summary>
+        /// Creates the database. Called once at application startup.
+        /// </summary>
+        public void CreateDatabase(bool isDevelopment)
+        {
+            if (isDevelopment) { Database.EnsureDeleted(); }
+            // EnsureCreated only creates the model if the database does not exist or it has no
+            // tables. Returns true if the schema was created.  Returns false if there are
+            // existing tables in the database. This avoids initializing multiple times.
+            if (Database.EnsureCreated()) { Initialize(); }
+            if (isDevelopment) Seed();
+        }
+
+        /// <summary>
+        /// Generates random values for testing the application. This method is only called in development mode.
+        /// </summary>
+        private void Seed()
+        {
+            Randomizer.Seed = new Random(1511);
+            var faker = new Faker("de");
+            var patients = SeedPatients(faker);
+            SeedAppointments(faker, patients);
+        }
+
+        private List<Patient> SeedPatients(Faker faker)
         {
             // Demopatienten erstellen
             var patients = new Faker<Patient>("de").CustomInstantiator(f =>
@@ -89,7 +106,7 @@ namespace Physiotool.Application.Infrastructure
             return patients;
         }
 
-        public List<Appointment> SeedAppointments(Faker faker, List<Patient> patients)
+        private List<Appointment> SeedAppointments(Faker faker, List<Patient> patients)
         {
             // Termine zu den Patienten erstellen. Dafür erstellen wir 100 Termine und weisen sie
             // jeweils einen zufälligen Patienten zu.

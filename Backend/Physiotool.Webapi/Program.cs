@@ -44,16 +44,11 @@ if (builder.Environment.IsDevelopment())
 
 var app = builder.Build();
 app.UseHttpsRedirection();
-if (app.Environment.IsDevelopment())
+// Im Development Mode erstellen wir bei jedem Serverstart die Datenbank neu.
+using (var scope = app.Services.CreateScope())
+using (var db = scope.ServiceProvider.GetRequiredService<PhysioContext>())
 {
-    using (var scope = app.Services.CreateScope())
-    using (var db = scope.ServiceProvider.GetRequiredService<PhysioContext>())
-    {
-        db.Database.EnsureDeleted();
-        db.Database.EnsureCreated();
-        db.Seed();
-    }
-    app.UseCors();
+    db.CreateDatabase(isDevelopment: app.Environment.IsDevelopment());
 }
 app.UseStaticFiles();
 app.UseAuthentication();
