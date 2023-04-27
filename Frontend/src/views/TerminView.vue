@@ -196,7 +196,7 @@ export default {
       console.log(this.model.date);
       axios
         .get(
-          "https://localhost:6001/api/appointment/available?day=" +
+          "appointment/available?day=" +
             this.model.date +
             ""
         )
