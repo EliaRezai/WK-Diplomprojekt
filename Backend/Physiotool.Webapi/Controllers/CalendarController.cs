@@ -32,8 +32,9 @@ namespace Physiotool.Webapi.Controllers
         [HttpGet("{year:int}/{month:int}")]
         public IActionResult GetCalendar(int year, int month)
         {
+            var defaultDuration = TimeSpan.FromHours(1);
             var calendarDays = _calendarService.GetDaysOfMonthFullWeeks(year, month);
-            var appointments = _db.Appointments.Include(a => a.Patient)
+            var appointments = _db.Appointments.Include(a => a.Patient).Include(a => a.AppointmentState)
                 .Where(a => a.Date.Month == month && a.Date.Year == year)
                 .ToList()
                 .OrderBy(a => a.Date).ThenBy(a => a.Time)
@@ -62,7 +63,10 @@ namespace Physiotool.Webapi.Controllers
                         Timestamp = calendarDay.JsTimestamp + a.Time.TotalMilliseconds,
                         Confirmed = a.AppointmentState is ConfirmedAppointmentState,
                         Deleted = a.AppointmentState is DeletedAppointmentState,
-                        DurationMin = (a.AppointmentState as ConfirmedAppointmentState)?.Duration.TotalMinutes
+                        (a.AppointmentState as ConfirmedAppointmentState)?.Duration,
+                        End = calendarDay.JsTimestamp + a.Time.TotalMilliseconds +
+                            ((a.AppointmentState as ConfirmedAppointmentState)?.Duration.TotalMilliseconds ?? defaultDuration.TotalMilliseconds),
+                        (a.AppointmentState as ConfirmedAppointmentState)?.Infotext
                     })
                 });
             return Ok(result);

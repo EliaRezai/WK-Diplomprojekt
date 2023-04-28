@@ -30,3 +30,7 @@ in den Ordner *Frontend* und führe die folgenden Befehle aus:
 npm install
 npm run build
 ```
+
+## Deployment
+
+Siehe [deployment.md](deployment.md).

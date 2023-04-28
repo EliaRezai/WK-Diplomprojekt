@@ -7,9 +7,13 @@ import store from './store.js'
 import 'bootstrap/dist/css/bootstrap.css'
 import './assets/main.css'
 
+
+
 axios.defaults.baseURL = process.env.NODE_ENV == 'production' ? "/api" : "https://localhost:6001/api";
 
 const app = createApp(App)
 app.use(router)
 app.use(store)
 app.mount('#app')
+
+

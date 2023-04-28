@@ -20,8 +20,10 @@ namespace Physiotool.Application.Infrastructure
         public DbSet<AppointmentState> AppointmentStates => Set<AppointmentState>();
         public DbSet<DeletedAppointmentState> DeletedAppointmentStates => Set<DeletedAppointmentState>();
         public DbSet<ConfirmedAppointmentState> ConfirmedAppointmentStates => Set<ConfirmedAppointmentState>();
+
         public PhysioContext(DbContextOptions<PhysioContext> opt) : base(opt)
         { }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             foreach (var entityType in modelBuilder.Model.GetEntityTypes())
@@ -43,27 +45,45 @@ namespace Physiotool.Application.Infrastructure
             }
         }
 
-        public void Seed()
-        {
-            Randomizer.Seed = new Random(1511);
-            var faker = new Faker("de");
-            SeedUsers(faker);
-            var patients = SeedPatients(faker);
-            SeedAppointments(faker, patients);
-        }
-
-        public List<User> SeedUsers(Faker faker)
+        /// <summary>
+        /// Initialize the database with some values (holidays, ...).
+        /// Unlike Seed, this method is also called in production.
+        /// </summary>
+        private void Initialize()
         {
             var users = new List<User>
             {
                 new User(username: "admin", initialPassword: "1111")
-                {Guid = faker.Random.Guid() }
             };
             Users.AddRange(users);
             SaveChanges();
-            return users;
         }
-        public List<Patient> SeedPatients(Faker faker)
+
+        /// <summary>
+        /// Creates the database. Called once at application startup.
+        /// </summary>
+        public void CreateDatabase(bool isDevelopment)
+        {
+            if (isDevelopment) { Database.EnsureDeleted(); }
+            // EnsureCreated only creates the model if the database does not exist or it has no
+            // tables. Returns true if the schema was created.  Returns false if there are
+            // existing tables in the database. This avoids initializing multiple times.
+            if (Database.EnsureCreated()) { Initialize(); }
+            if (isDevelopment) Seed();
+        }
+
+        /// <summary>
+        /// Generates random values for testing the application. This method is only called in development mode.
+        /// </summary>
+        private void Seed()
+        {
+            Randomizer.Seed = new Random(1511);
+            var faker = new Faker("de");
+            var patients = SeedPatients(faker);
+            SeedAppointments(faker, patients);
+        }
+
+        private List<Patient> SeedPatients(Faker faker)
         {
             // Demopatienten erstellen
             var patients = new Faker<Patient>("de").CustomInstantiator(f =>
@@ -85,14 +105,16 @@ namespace Physiotool.Application.Infrastructure
             SaveChanges();
             return patients;
         }
-        public List<Appointment> SeedAppointments(Faker faker, List<Patient> patients)
+
+        private List<Appointment> SeedAppointments(Faker faker, List<Patient> patients)
         {
             // Termine zu den Patienten erstellen. Dafür erstellen wir 100 Termine und weisen sie
             // jeweils einen zufälligen Patienten zu.
             var appointments = new Faker<Appointment>("de").CustomInstantiator(f =>
             {
-                // Ein Termin wird zwischen 1.9.2020 und 1.6.2022 erstellt.
-                var date = f.Date.Between(new DateTime(2020, 9, 1), new DateTime(2022, 6, 1)).Date;
+                // Ein Termin wird zwischen 1.1. letzten Jahres bis 1 Monat im Voraus erstellt. 1.9.2021 und 1.6.2023 erstellt.
+                var today = DateTime.UtcNow.Date;
+                var date = f.Date.Between(new DateTime(today.Year - 1, 1, 1), today.AddDays(31)).Date;
                 if (date.DayOfWeek == DayOfWeek.Saturday || date.DayOfWeek == DayOfWeek.Sunday)
                     date = date.AddDays(2);
                 // Termine nur zu vollen 1/4 Stunden erstellen.
@@ -104,7 +126,7 @@ namespace Physiotool.Application.Infrastructure
                 {
                     2 => new ConfirmedAppointmentState(
                         created: appointmentCreated.AddMinutes(f.Random.Int(30, 5 * 1440)),
-                        duration: TimeSpan.FromMinutes(f.Random.Int(2, 8) * 15)),
+                        duration: TimeSpan.FromMinutes(f.Random.Int(2, 8) * 15), infotext: f.Lorem.Sentence(4).OrNull(f, 0.5f)),
                     3 => new DeletedAppointmentState(appointmentCreated.AddMinutes(f.Random.Int(30, 5 * 1440))),
                     _ => new AppointmentState(appointmentCreated)
                 };

@@ -31,6 +31,8 @@
             <!-- <i class="fa fa-bars"></i> -->
         </nav>
     </div>
+
+    
 </template>
 <script>
 export default {
@@ -45,6 +47,9 @@ export default {
     methods: {
 
     }
+
+    
+
 }
 </script>
 <style scoped>
@@ -100,7 +105,7 @@ nav.fa {
 .nav-links ul li a {
     color: antiquewhite;
     text-decoration: none;
-    font-size: 13px;
+    font-size: 15px;
 }
 
 .nav-links ul li::after {

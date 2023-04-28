@@ -32,6 +32,7 @@ namespace Physiotool.Application.Model
         public DateTime Created { get; set; }
         public int AppointmentStateId { get; set; }
         public AppointmentState AppointmentState { get; set; }
+
     }
     
     
