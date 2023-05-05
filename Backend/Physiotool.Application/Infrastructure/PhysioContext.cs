@@ -17,6 +17,9 @@ namespace Physiotool.Application.Infrastructure
         public DbSet<User> Users => Set<User>();
         public DbSet<Patient> Patients => Set<Patient>();
         public DbSet<Appointment> Appointments => Set<Appointment>();
+
+       public DbSet<OpeningHour> OpeningHour=> Set<OpeningHour>();
+       
         public PhysioContext(DbContextOptions<PhysioContext> opt) : base(opt)
         { }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -82,15 +85,15 @@ namespace Physiotool.Application.Infrastructure
             })
             .Generate(200)
             .GroupBy(p => p.Email).Select(g => g.First())
-            .ToList();
+            .ToList();  
             Patients.AddRange(patients);
             SaveChanges();
             return patients;
         }
         public List<Appointment> SeedAppointments(Faker faker, List<Patient> patients)
         {
-            // Termine zu den Patienten erstellen. Dafür erstellen wir 100 Termine und weisen sie
-            // jeweils einen zufälligen Patienten zu.
+            // Termine zu den Patienten erstellen. Dafür erstellen wir 100 Termine und
+            // jeweils einen zufälligen Patienten zuweisen.
             var appointments = new Faker<Appointment>("de").CustomInstantiator(f =>
             {
                 // Ein Termin wird zwischen 1.9.2020 und 1.6.2022 erstellt.
@@ -111,9 +114,16 @@ namespace Physiotool.Application.Infrastructure
                     _ => new AppointmentState(appointmentCreated)
                 };
                 return new Appointment(
-                        date: date, time: time, patient: f.Random.ListItem(patients), created: appointmentCreated,
+                        date: date, 
+                        time: time, 
+                        patient: f.Random.ListItem(patients), 
+                        created: appointmentCreated,
                         appointmentState: appointmentState)
                 { Guid = faker.Random.Guid() };
+
+
+               
+
             })
             .Generate(1000)
             .ToList();

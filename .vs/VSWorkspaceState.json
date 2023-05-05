@@ -1,0 +1,10 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\Backend",
+    "\\Backend\\Physiotool.Application",
+    "\\Backend\\Physiotool.Application\\Infrastructure",
+    "\\Backend\\Physiotool.Webapi"
+  ],
+  "PreviewInSolutionExplorer": false
+}
