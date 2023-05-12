@@ -50,6 +50,7 @@ using (var db = scope.ServiceProvider.GetRequiredService<PhysioContext>())
 {
     db.CreateDatabase(isDevelopment: app.Environment.IsDevelopment());
 }
+app.UseCors();
 app.UseStaticFiles();
 app.UseAuthentication();
 app.UseAuthorization();
