@@ -44,7 +44,9 @@
                         <li>Die klassische Massage</li>
                         <li>Die Lymphdrainage</li>
                     </ul>
-                    <button>Buchen</button>
+                    <button>
+                        <router-link v-on:click="fullHeight = false" to="/termin">Termin buchen</router-link>
+                    </button>
                 </div>
                 <div class="price-col">
                     <p>Packet 2</p>
@@ -57,7 +59,9 @@
                         <li>Die klassische Massage</li>
                         <li>45 - Minuten</li>
                     </ul>
-                    <button>Buchen</button>
+                    <button>
+                        <router-link v-on:click="fullHeight = false" to="/termin">Termin buchen</router-link>
+                    </button>
                 </div>
                 <div class="price-col">
                     <p>Packet 3</p>
@@ -70,7 +74,10 @@
                         <li>Die klassische Massage</li>
                         <li>45 Minuten</li>
                     </ul>
-                    <button>Buchen</button>
+                                        
+                    <button>
+                        <router-link v-on:click="fullHeight = false" to="/termin">Termin buchen</router-link>
+                    </button>
                 </div>
             </div>
         </div>
@@ -84,13 +91,19 @@
                 <div class="newfooter-col">
                     <h4>Links</h4>
                     <ul>
-                        <li><a href="#">Startseite</a></li>
-                        <li><a href="#">Therapien</a></li>
-                        <li><a href="#">Termin buchen</a></li>
-                        <li><a href="#">Termin verwalten</a></li>
-                        <li><a href="#">Login</a></li>
-
-                    </ul>
+                    <li>
+                        <router-link v-on:click="fullHeight = true" to="/">Startseite</router-link>
+                    </li>
+                    <li>
+                        <router-link v-on:click="fullHeight = false" to="/praxis">Praxis</router-link>
+                    </li>
+                    <li>
+                        <router-link v-on:click="fullHeight = false" to="/therapie">Therapien</router-link>
+                    </li>
+                    <li>
+                        <router-link v-on:click="fullHeight = false" to="/termin">Termin buchen</router-link>
+                    </li>
+                </ul>
                 </div>
 
                 <div class="newfooter-col">

@@ -777,6 +777,19 @@ position: relative;
 cursor: pointer;
 }
 
+.btn btn-outline-dark{
+  grid-column: span 2;
+  display: inline-block;
+text-decoration: none;
+color: #192936;
+border: 1px solid #52a1e2;
+padding: 20px 34px;
+font-size: 13px;
+background: transparent;
+position: relative;
+cursor: pointer;
+}
+
 .appointmentForm button:hover{
   border: #89c0e3;
 background: #89c0e3;
