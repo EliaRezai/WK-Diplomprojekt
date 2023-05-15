@@ -6,7 +6,6 @@
                 Die Physiotherapeuten unserer Wiener Praxis verfolgen das Ziel, die Bewegungs- und Funktionsfähigkeit deiner Gelenke und des gesamten Bewegungsapparates bei <br />
                 Beschwerden, Schmerzen oder nach Verletzungen und Unfällen zu verbessern bzw. wiederherzustellen.
             </p>
-            <a href="" class="hero-btn">PHSIOTHRAPIE BEGINNEN</a>
         </div>
 
         <div class="c">
@@ -86,7 +85,7 @@
 
         <div class="cta">
             <h1>Buchen Sie sich Ihren freien Termin</h1>
-            <a href="" class="hero-btn">Termin buchen</a>
+
         </div>
 
         <!------- footer ------>

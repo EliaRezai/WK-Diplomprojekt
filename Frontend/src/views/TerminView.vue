@@ -181,11 +181,9 @@ color: #192936;
 border: 1px solid #52a1e2;
 padding: 10px 14px;
 font-size: 13px;
-background: transparent;
-position: relative;
-cursor: pointer;"
+"
       type="button"
-      class="btn btn-outline-dark"
+      class="btn btn-outline-info"
       v-on:click="sendReservation()"
     >
       Termin Buchen

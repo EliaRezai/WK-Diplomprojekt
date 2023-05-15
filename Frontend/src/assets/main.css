@@ -115,12 +115,18 @@ h2{
   transform: scale(1.1);
 }
 
-@media (max-width: 700px) {
+@media (max-width: 767px) {
   .row {
-      flex-direction: column;
-  }
+    width: 50%;
+    margin-bottom: 30px;
+    }
 }
 
+@media(max-width: 574px){
+  .row{
+      width: 100%;
+  }
+}
 /* ------- campus -------*/
 
 .campus {
@@ -257,11 +263,8 @@ widows: 100%;----*/
   padding: 0;
 }
 
-@media (max-width: 700px) {
-  .cta h1 {
-      font-size: 16px;
-  }
-}
+
+
 
 .footer {
   margin-top: 150px;
@@ -834,13 +837,20 @@ transform: 2s;
 
 .loginView {
   padding: 2em 3em;
-  border: 2px solid black;
+  border: 2px solid #192936;;
   border-radius: 1em;
   max-width: 50em;
   margin: 2em auto;
   display: flex;
   flex-direction: column;
   gap: 1em;
+
+  background: #fff;
+  padding: 40px 60px 70px;
+  text-align: center;
+  border-style: solid;
+  border-color: #19293696;
+  
 }
 .formRow {
   display: flex;
@@ -1319,6 +1329,82 @@ font-size:medium;
   margin: 20px auto;
 
 }
+@media(max-width: 767px){
+  .explore3{
+      width: 50%;
+      margin-bottom: 30px;
+  }
+}
+
+@media(max-width: 574px){
+  .explore3{
+      width: 100%;
+  }
+}
+@media(max-width: 767px){
+  .content-col{
+      width: 50%;
+      margin-bottom: 30px;
+  }
+}
+
+@media(max-width: 574px){
+  .content-col{
+      width: 100%;
+  }
+}
+
+@media(max-width: 767px){
+  .image-col{
+      width: 50%;
+      margin-bottom: 30px;
+  }
+}
+
+@media(max-width: 574px){
+  .image-col{
+      width: 100%;
+  }
+}
+
+@media(max-width: 767px){
+  .line{
+      width: 50%;
+      margin-bottom: 30px;
+  }
+}
+
+@media(max-width: 574px){
+  .line{
+      width: 100%;
+  }
+}
+
+@media(max-width: 767px){
+  .ec{
+      width: 50%;
+      margin-bottom: 30px;
+  }
+}
+
+@media(max-width: 574px){
+  .ec{
+      width: 100%;
+  }
+}
+
+@media(max-width: 767px){
+  .row3{
+      width: 50%;
+      margin-bottom: 30px;
+  }
+}
+
+@media(max-width: 574px){
+  .row3{
+      width: 100%;
+  }
+}
 
 
 p{
@@ -1399,4 +1485,32 @@ p{
 .image-gallery4 img{
   max-width: 320px;
   margin: 10px;
+}
+
+
+@media(max-width: 767px){
+  .appointmentForm{
+      width: 50%;
+      margin-bottom: 30px;
+  }
+}
+
+@media(max-width: 574px){
+  .appointmentForm{
+      width: 100%;
+  }
+}
+
+
+@media(max-width: 767px){
+  .description{
+      width: 50%;
+      margin-bottom: 30px;
+  }
+}
+
+@media(max-width: 574px){
+  .description{
+      width: 100%;
+  }
 }
