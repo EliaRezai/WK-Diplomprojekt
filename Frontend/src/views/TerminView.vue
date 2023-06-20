@@ -306,9 +306,8 @@ export default {
       try {
         this.validation = {};
         this.model.time = `${this.model.time.substring(0, 5)}:00`;
-        await axios.post("appointment", this.model);
-        alert("Danke für Ihre Reservierung!");
-        this.initForm();
+        const result = (await axios.post("appointment", this.model)).data;
+        this.$router.push({ path: `/patient/${result.patientGuid}`});
       } catch (e) {
         if (e.response?.status == 400) {
           if (typeof e.response.data.errors === "object")

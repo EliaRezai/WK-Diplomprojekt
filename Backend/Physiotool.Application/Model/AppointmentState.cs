@@ -17,5 +17,6 @@ namespace Physiotool.Application.Model
         public int Id { get; set; }
         public Appointment Appointment { get; private set; } = default!;
         public DateTime Created { get; set; }
+        public string Name { get; set; } = default!;
     }
 }

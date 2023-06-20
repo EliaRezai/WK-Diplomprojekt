@@ -99,7 +99,7 @@ namespace Physiotool.Webapi.Controllers
                 appointmentState: new AppointmentState(DateTime.UtcNow));
             _db.Appointments.Add(appointment);
             _db.SaveChanges();
-            return CreatedAtAction(nameof(AddAppointment), new { appointment.Guid });
+            return CreatedAtAction(nameof(AddAppointment), new { AppointmentGuid = appointment.Guid, PatientGuid = patient.Guid });
         }
 
         /// <summary>
