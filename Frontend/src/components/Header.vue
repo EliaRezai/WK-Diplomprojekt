@@ -41,8 +41,12 @@ export default {
     },
     data() {
         return {
-            fullHeight: true
+            fullHeight: false
         }
+    },
+    mounted() {
+        this.fullHeight = this.$route.path == "/";
+
     },
     methods: {
 

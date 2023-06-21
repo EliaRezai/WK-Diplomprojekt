@@ -26,6 +26,7 @@ namespace Physiotool.Application.Infrastructure
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<AppointmentState>().HasDiscriminator(a => a.Name);
             foreach (var entityType in modelBuilder.Model.GetEntityTypes())
             {
                 foreach (var key in entityType.GetForeignKeys())
