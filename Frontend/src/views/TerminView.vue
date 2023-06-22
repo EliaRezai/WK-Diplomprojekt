@@ -1,4 +1,5 @@
 <template>
+<span>
       <div class="description">
         <h1>Terminverwaltung</h1>
       <p>
@@ -169,6 +170,7 @@
   border-color: #19293696;
     "
     v-for="appointment in appointmentsAvailable"
+      :key="appointment"
   >
     <div>
       <p>{{ appointment.substring(0, 5) }}</p>
@@ -253,6 +255,7 @@ cursor: pointer;"
             </div>
         </div>
     </div>
+</span>
 </template>
 
 <script>

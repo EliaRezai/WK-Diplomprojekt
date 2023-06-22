@@ -3,12 +3,12 @@
         <div class="about-us">
             <div class="row">
                 <div class="a-col">
-                    <h1>Professionelle Massage in wiener Innenstadt</h1>
+                    <h1>Professionelle Massage in der Wiener Innenstadt</h1>
                     <p>
-                      Durch Massagen in der wiener innenstadt Physiotherapie lassen sich
+                      Durch Massagen in der Wiener Innenstadt Physiotherapie lassen sich
                       muskuläre Verspannungen, Verklebungen, oder Verhärtungen lösen.
-                      Dadurch verbessert sich dein körperliches Wohlbefinden, der Verspannungsschmerzen lässt nach 
-                      und du kannst wieder besser schlafen.
+                      Dadurch verbessert sich das körperliches Wohlbefinden, die Verspannungsschmerzen lassen nach 
+                      und Sie können wieder besser schlafen.
 
                     </p>
                     <br />
@@ -31,7 +31,7 @@
         <br />
 
         <div class="container2">
-            <h1>Suche dein Passender Traphie aus</h1>
+            <h1>Suchen Sie Ihre passende Therapie aus</h1>
             <div class="price-row">
                 <div class="price-col">
                     <p>Packet 1</p>

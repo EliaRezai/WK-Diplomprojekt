@@ -27,9 +27,9 @@
         <!---------------- facilities ------------->
 
         <div class="facilities">
-            <h1>Wir aktivieren deine körpereigenen Heilkräfte</h1>
+            <h1>Wir aktivieren Ihre körpereigenen Heilkräfte</h1>
             <p>
-                und helfen deinem Körper, sich selbst zu heilen. Die Physiotherapeuten setzen durch natürliche Reize die körpereigenen Heilkräfte in Gang und leiten dadurch den Heilungsprozess ein
+                und helfen Ihren Körper, sich selbst zu heilen. Die Physiotherapeuten setzen durch natürliche Reize die körpereigenen Heilkräfte in Gang und leiten dadurch den Heilungsprozess ein
                 oder beschleunigen diesen.
             </p>
 
@@ -38,21 +38,21 @@
                     <img src="@/assets/images/44.jpg" />
                     <h3>Physio Übungen</h3>
                     <p>
-                        die du begleitend zur Behandlung in unserer Praxis in Wien zu Hause durchführen kannst. Unser Team ist darauf spezialisiert, nicht nur eine kurzfristige Erleichterung zu
-                        verschaffen, sondern dich dabei zu unterstützen, langfristig schmerzen
+                        die Sie begleitend zur Behandlung in unserer Praxis in Wien zu Hause durchführen können. Unser Team ist darauf spezialisiert, nicht nur eine kurzfristige Erleichterung zu
+                        verschaffen, sondern Sie dabei zu unterstützen, langfristige Schmerzen zu beseitigen.
                     </p>
                 </div>
                 <div class="facilities-col">
                     <img src="@/assets/images/77.jpg" />
                     <h3>Individuellbehandlung</h3>
                     <p>
-                        Am Beginn der Physiotherapie steht eine persönliche Befunderhebung und detaillierte Diagnose , in welcher der Therapeut/die Therapeutin alle relevanten Informationen sammelt.
+                        Am Beginn der Physiotherapie steht eine persönliche Befunderhebung und detaillierte Diagnose, in welcher der Therapeut bzw. die Therapeutin alle relevanten Informationen sammelt.
                     </p>
                 </div>
                 <div class="facilities-col">
                     <img src="@/assets/images/011.jpg" />
                     <h3>Hilfe zur Selbsthilfe</h3>
-                    <p>Als verantwortungsvolle Therapeuten machen wir unsere Patienten nicht von uns abhängig, sondern zeigen Mittel und Wege auf, wie du dir selbst helfen kannst.</p>
+                    <p>Als verantwortungsvolle Therapeuten machen wir unsere Patienten nicht von uns abhängig, sondern zeigen Mittel und Wege auf, wie Sie sich selbst helfen können.</p>
                 </div>
             </div>
         </div>
@@ -70,7 +70,7 @@
             <div class="row">
                 <div class="course-col">
                     <h3>Termin buchen</h3>
-                    <p>Buche jetzt ein Termin und nur nach wenigen Therapie-Einheiten wirst du bereits spürbare Ergebnisse wahrnehmen</p>
+                    <p>Buchen Sie jetzt einen Termin und nur nach wenigen Therapie-Einheiten werden Sie bereits spürbare Ergebnisse wahrnehmen</p>
                 </div>
                 <div class="course-col">
                     <h3>Tipps zu Übungen</h3>
@@ -78,7 +78,7 @@
                 </div>
                 <div class="course-col">
                     <h3>Wichtige Infos</h3>
-                    <p>Die Aktivierung der körpereigenen Heilkräfte Die Unterstützung der Regeneration durch selbstständige Durchführung</p>
+                    <p>Die Aktivierung der körpereigenen Heilkräfte und die Unterstützung der Regeneration durch selbstständige Durchführung von Übungen</p>
                 </div>
             </div>
         </div>
