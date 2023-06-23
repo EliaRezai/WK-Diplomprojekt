@@ -3,6 +3,7 @@ import axios from 'axios';
 </script>
 
 <template>
+<span>
     <div class="loginView">
         <div v-if="!authenticated">
             <div class="formRow">
@@ -82,6 +83,7 @@ import axios from 'axios';
             </div>
         </div>
     </div>
+    </span>
 </template>
 
 <style scoped>
